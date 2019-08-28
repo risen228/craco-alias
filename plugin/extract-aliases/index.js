@@ -1,16 +1,7 @@
 const fs = require('fs')
 const path = require('path')
-const normalizePluginOptions = require('./normalize-plugin-options')
-
-const joinAliases = ({ basePath, aliases }) => {
-  const result = {}
-
-  for (let aliasName in aliases) {
-    result[aliasName] = path.join(basePath, aliases[aliasName])
-  }
-
-  return result
-}
+const normalizePluginOptions = require('../normalize-plugin-options')
+const normalizeAliases = require('./normalize-aliases')
 
 const extractAliasesFromConfig = ({ configPath, appPath }) => {
   const configFileContents = fs.readFileSync(configPath)
@@ -18,16 +9,16 @@ const extractAliasesFromConfig = ({ configPath, appPath }) => {
 
   const { compilerOptions } = config
 
-  const normalizedAliases = {}
+  const standardAliases = {}
 
   for (let aliasName in compilerOptions.paths) {
     const [aliasPath] = compilerOptions.paths[aliasName]
-    normalizedAliases[aliasName.replace('/*', '')] = aliasPath.replace('/*', '')
+    standardAliases[aliasName.replace('/*', '')] = aliasPath.replace('/*', '')
   }
 
-  return joinAliases({
+  return normalizeAliases({
     basePath: path.join(appPath, compilerOptions.baseUrl),
-    aliases: normalizedAliases
+    aliases: standardAliases
   })
 }
 
@@ -49,7 +40,7 @@ const extractAliases = ({ pluginOptions, context: { paths } }) => {
     })
 
   if (options.source === 'options')
-    return joinAliases({
+    return normalizeAliases({
       basePath: appPath,
       aliases: options.aliases
     })

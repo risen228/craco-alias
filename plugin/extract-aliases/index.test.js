@@ -1,8 +1,8 @@
 const path = require('path')
-const extractAliases = require('./extract-aliases')
+const extractAliases = require('../extract-aliases')
 
 describe('extract-aliases', () => {
-  const appPath = path.resolve(__dirname, '..')
+  const appPath = path.resolve(__dirname, '../..')
   const appJsConfig = path.join(appPath, 'mocks/jsconfig.json')
   const tsConfigPath = path.join(appPath, 'mocks/tsconfig.paths.json')
 
@@ -21,7 +21,7 @@ describe('extract-aliases', () => {
           '@file': './src/file.js',
           '@file2': 'src/file2.js',
           '@dir': './src/dir',
-          '@dir2': '././src/dir2',
+          '@dir2': '././src/dir2/',
           $dir3: 'src/dir3'
         }
       },
