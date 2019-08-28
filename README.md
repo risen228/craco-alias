@@ -3,7 +3,7 @@
 [![npm](https://img.shields.io/npm/v/craco-alias.svg)](https://www.npmjs.com/package/craco-alias)
 [![Travis (.com)](https://img.shields.io/travis/com/risenforces/craco-alias)](https://travis-ci.com/risenforces/craco-alias)
 
-A craco plugin for automatic aliases generation.
+A craco plugin for automatic aliases generation for Webpack and Jest.
 
 ### Installation
 
@@ -52,7 +52,7 @@ A craco plugin for automatic aliases generation.
 ### Examples
 
 <details>
-<summary><b>Specify aliases manually (source: "options")</b></summary>  
+<summary><b>Specify aliases manually (source: "options")</b></summary>
 
 > Note: you don't need to add `/*` part for directories in this case
 
