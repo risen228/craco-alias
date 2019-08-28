@@ -1,9 +1,19 @@
+const path = require('path')
+
 const getModuleNameMapper = ({ aliases }) => {
   const moduleNameMapper = {}
 
   for (let aliasName in aliases) {
     const aliasPath = aliases[aliasName]
-    moduleNameMapper[`^${aliasName}(.*)$`] = `${aliasPath}$1`
+
+    const isFile = path.extname(aliasPath).length > 0
+
+    if (isFile) {
+      moduleNameMapper[`^${aliasName}$`] = aliasPath
+    } else {
+      moduleNameMapper[`^${aliasName}$`] = aliasPath
+      moduleNameMapper[`^${aliasName}/(.*)$`] = `${aliasPath}/$1`
+    }
   }
 
   return moduleNameMapper
