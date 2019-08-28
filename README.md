@@ -1,4 +1,4 @@
-# cra-alias
+# craco-alias
 
 [![npm](https://img.shields.io/npm/v/craco-alias.svg?style=flat-square)](https://www.npmjs.com/package/craco-alias)
 [![Travis (.org)](https://img.shields.io/travis/risenforces/craco-alias.svg?style=flat-square)](https://travis-ci.org/risenforces/craco-alias)
@@ -52,7 +52,7 @@ A craco plugin for automatic aliases generation.
 ### Examples
 
 <details>
-<summary><b>Specify aliases manually (`source: 'options'`)</b></summary>
+<summary><b>Specify aliases manually (source: "options")</b></summary>  
 
 > Note: you don't need to add `/*` part for directories in this case
 
@@ -78,7 +78,7 @@ module.exports = {
 </details>
 
 <details>
-<summary><b>Use aliases from jsconfig.json (`source: 'jsconfig'`)</b></summary>
+<summary><b>Use aliases from jsconfig.json (source: "jsconfig")</b></summary>
 
 ```js
 /* craco.config.js */
@@ -116,7 +116,7 @@ module.exports = {
 </details>
 
 <details>
-<summary><b>Use aliases from tsconfig.json (`source: 'tsconfig'`)</b></summary>
+<summary><b>Use aliases from tsconfig.json (source: "tsconfig")</b></summary>
 
 ```js
 /* craco.config.js */
