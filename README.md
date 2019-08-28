@@ -1,7 +1,7 @@
 # craco-alias
 
-[![npm](https://img.shields.io/npm/v/craco-alias.svg?style=flat-square)](https://www.npmjs.com/package/craco-alias)
-[![Travis (.org)](https://img.shields.io/travis/risenforces/craco-alias.svg?style=flat-square)](https://travis-ci.org/risenforces/craco-alias)
+[![npm](https://img.shields.io/npm/v/craco-alias.svg)](https://www.npmjs.com/package/craco-alias)
+[![Travis (.com)](https://img.shields.io/travis/com/risenforces/craco-alias)](https://travis-ci.com/risenforces/craco-alias)
 
 A craco plugin for automatic aliases generation.
 
