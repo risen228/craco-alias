@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "baseUrl": "src",
+    "paths": {
+      "@file": ["./file.js"],
+      "@file2": ["file2.js"],
+      "@dir/*": ["./dir/*"],
+      "@dir2/*": ["././dir2/*"],
+      "$dir3/*": ["dir3/*", "dir3"]
+    }
+  }
+}
