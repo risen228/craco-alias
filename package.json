@@ -1,6 +1,6 @@
 {
   "name": "craco-alias",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A craco plugin for automatic aliases generation",
   "main": "plugin/index.js",
   "scripts": {
