@@ -5,7 +5,9 @@
 
 A [craco](https://github.com/sharegate/craco) plugin for automatic aliases generation for Webpack and Jest.
 
-**The plugin does not fully support a module alises**
+> :warning: **The plugin does not work with typescript CRA template, we are working on it**
+
+> :warning: **The plugin does not fully support a module alises**
 
 ## List of Contents
 
