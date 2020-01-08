@@ -12,7 +12,7 @@ A [craco](https://github.com/sharegate/craco) plugin for automatic aliases gener
 
 ### Installation
 
-1. Install [craco](https://github.com/sharegate/craco)
+1. Install [craco](https://github.com/gsoft-inc/craco/blob/master/packages/craco/README.md#installation)
 
 2. Install `craco-alias`:
 
