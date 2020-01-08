@@ -35,14 +35,6 @@ describe('check-config-contents', () => {
     )
 
     handyMockedCheck({
-      compilerOptions: {}
-    })
-
-    expect(handleErrorMock).toHaveBeenLastCalledWith(
-      `Property "compilerOptions.baseUrl" is missing in ${configFileName}`
-    )
-
-    handyMockedCheck({
       compilerOptions: {
         baseUrl: 'src'
       }

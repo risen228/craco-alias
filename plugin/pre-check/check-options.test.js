@@ -12,11 +12,19 @@ describe('check-options', () => {
 
   test('should check pluginOptions type', () => {
     mockedCheck({
+      pluginOptions: undefined
+    })
+
+    expect(handleErrorMock).toHaveBeenLastCalledWith(
+      'Plugin options should be specified'
+    )
+
+    mockedCheck({
       pluginOptions: 123
     })
 
     expect(handleErrorMock).toHaveBeenLastCalledWith(
-      'You have provided an invalid options'
+      'Plugin options should be an object'
     )
   })
 
@@ -27,9 +35,15 @@ describe('check-options', () => {
       }
     })
 
+    const availableSources = ['jsconfig', 'tsconfig', 'options']
+
+    const availableSourcesString = availableSources
+      .map(s => `"${s}"`)
+      .join(', ')
+
     expect(handleErrorMock).toHaveBeenLastCalledWith(
       'You have provided an invalid aliases source.' +
-        ' Available sources are: "jsconfig", "tsconfig", "options"'
+        ` Available sources are: ${availableSourcesString}`
     )
   })
 
@@ -46,6 +60,19 @@ describe('check-options', () => {
     )
   })
 
+  test('should check "baseUrl" when source is "options"', () => {
+    mockedCheck({
+      pluginOptions: {
+        source: 'options',
+        baseUrl: 345345
+      }
+    })
+
+    expect(handleErrorMock).toHaveBeenLastCalledWith(
+      'The "baseUrl" option should be a string'
+    )
+  })
+
   test('should check "aliases" when source is "options"', () => {
     mockedCheck({
       pluginOptions: {
@@ -55,8 +82,7 @@ describe('check-options', () => {
     })
 
     expect(handleErrorMock).toHaveBeenLastCalledWith(
-      'The "source" option is set to "options",' +
-        ' but you have provided an invalid aliases'
+      'The "aliases" option should be an object'
     )
   })
 })

@@ -4,8 +4,6 @@
 
 A [craco](https://github.com/sharegate/craco) plugin for automatic aliases generation for Webpack and Jest.
 
-> :warning: **The plugin does not fully support a module alises**
-
 ## List of Contents
 
 - [Installation](#installation)
@@ -32,8 +30,7 @@ A [craco](https://github.com/sharegate/craco) plugin for automatic aliases gener
        {
          plugin: CracoAlias,
          options: {
-           // craco-alias options
-           // please see below
+           // see in examples section
          }
        }
      ]
@@ -47,6 +44,10 @@ A [craco](https://github.com/sharegate/craco) plugin for automatic aliases gener
 - `source`:
   One of `"options"`, `"jsconfig"`, `"tsconfig"`  
   Defaults to `"options"`
+
+- `baseUrl`:
+  A base url for aliases. (`./src` for example)
+  Defaults to `./` (project root directory)
 
 - `aliases`:
   An object with aliases names and paths  
@@ -74,9 +75,12 @@ module.exports = {
       plugin: CracoAlias,
       options: {
         source: "options",
+        baseUrl: "./",
         aliases: {
-          "@file": "src/file.js",
-          "@dir": "src/some/dir"
+          "@file": "./src/file.js",
+          "@dir": "./src/some/dir",
+          // you can alias packages too
+          "@material-ui": "./node_modules/@material-ui-ie10"
         }
       }
     }
@@ -99,14 +103,17 @@ module.exports = {
     {
       plugin: CracoAlias,
       options: {
-        source: "jsconfig"
+        source: "jsconfig",
+        // baseUrl SHOULD be specified
+        // plugin does not take it from jsconfig
+        baseUrl: "./src"
       }
     }
   ]
 };
 ```
 
-> Note: your jsconfig should always have baseUrl and paths properties
+> **Note:** your jsconfig should always have `compilerOptions.paths` property. `baseUrl` is optional for plugin, but some IDEs and editors require it for intellisense. 
 
 ```js
 /* jsconfig.json */
@@ -136,6 +143,7 @@ module.exports = {
    ```js
    {
      "compilerOptions": {
+       // baseUrl is optional for plugin, but some IDEs require it
        "baseUrl": "src",
        "paths": {
          "@file-alias": ["./your/file.tsx"],
@@ -170,6 +178,9 @@ module.exports = {
          plugin: CracoAlias,
          options: {
            source: "tsconfig",
+           // baseUrl SHOULD be specified
+           // plugin does not take it from tsconfig
+           baseUrl: "./src",
            // tsConfigPath should point to the file where "baseUrl" and "paths" are specified
            tsConfigPath: "./tsconfig.extend.json"
          }

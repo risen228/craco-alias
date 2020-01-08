@@ -1,8 +1,13 @@
 const normalizePluginOptions = require('../normalize-plugin-options')
 
 const checkOptions = ({ pluginOptions, handleError }) => {
-  if (pluginOptions && typeof pluginOptions !== 'object')
-    return handleError('You have provided an invalid options')
+  if (typeof pluginOptions === 'undefined') {
+    return handleError('Plugin options should be specified')
+  }
+
+  if (typeof pluginOptions !== 'object') {
+    return handleError('Plugin options should be an object')
+  }
 
   const options = normalizePluginOptions(pluginOptions)
 
@@ -28,10 +33,15 @@ const checkOptions = ({ pluginOptions, handleError }) => {
   }
 
   if (options.source === 'options') {
+    if (typeof options.baseUrl !== 'string') {
+      return handleError(
+        'The "baseUrl" option should be a string'
+      )
+    }
+
     if (typeof options.aliases !== 'object' || options.aliases === null)
       return handleError(
-        'The "source" option is set to "options",' +
-          ' but you have provided an invalid aliases'
+        'The "aliases" option should be an object'
       )
   }
 }
