@@ -16,11 +16,6 @@ const checkConfigContents = ({
       `Property "compilerOptions" is missing in ${configFileName}`
     )
 
-  if (!config.compilerOptions.baseUrl)
-    return handleError(
-      `Property "compilerOptions.baseUrl" is missing in ${configFileName}`
-    )
-
   if (!config.compilerOptions.paths)
     return handleError(
       `Property "compilerOptions.paths" is missing in ${configFileName}`

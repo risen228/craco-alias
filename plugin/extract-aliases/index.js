@@ -3,7 +3,7 @@ const path = require('path')
 const normalizePluginOptions = require('../normalize-plugin-options')
 const normalizeAliases = require('./normalize-aliases')
 
-const extractAliasesFromConfig = ({ configPath, appPath }) => {
+const extractAliasesFromConfig = ({ configPath, absoluteBaseUrl }) => {
   const configFileContents = fs.readFileSync(configPath)
   const config = JSON.parse(configFileContents)
 
@@ -17,7 +17,7 @@ const extractAliasesFromConfig = ({ configPath, appPath }) => {
   }
 
   return normalizeAliases({
-    basePath: path.join(appPath, compilerOptions.baseUrl),
+    absoluteBaseUrl,
     aliases: standardAliases
   })
 }
@@ -26,22 +26,25 @@ const extractAliases = ({ pluginOptions, context: { paths } }) => {
   const options = normalizePluginOptions(pluginOptions)
 
   const { appPath } = paths
+  const { baseUrl } = options
+
+  const absoluteBaseUrl = path.join(appPath, baseUrl)
 
   if (options.source === 'jsconfig')
     return extractAliasesFromConfig({
       configPath: paths.appJsConfig,
-      appPath
+      absoluteBaseUrl
     })
 
   if (options.source === 'tsconfig')
     return extractAliasesFromConfig({
       configPath: options.tsConfigPath,
-      appPath
+      absoluteBaseUrl
     })
 
   if (options.source === 'options')
     return normalizeAliases({
-      basePath: appPath,
+      absoluteBaseUrl,
       aliases: options.aliases
     })
 }

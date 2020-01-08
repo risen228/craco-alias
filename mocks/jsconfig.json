@@ -1,12 +1,13 @@
 {
   "compilerOptions": {
-    "baseUrl": "src",
     "paths": {
-      "@file": ["./file.js"],
-      "@file2": ["file2.js"],
-      "@dir/*": ["./dir/*"],
-      "@dir2/*": ["././dir2/*"],
-      "$dir3/*": ["dir3/*", "dir3"]
+      "@file": ["./src/file.js"],
+      "@file2": ["src/file2.js"],
+      "@dir/*": ["./src/dir/*"],
+      "@dir2/*": ["././src/dir2/*"],
+      "$dir3/*": ["src/dir3/*", "src/dir3"],
+      "my-package": ["./node_modules/some-package", "./node_modules/some-package/*"],
+      "@material-ui": ["node_modules/@material-ui/ie-10/ie-10.js"]
     }
   }
 }

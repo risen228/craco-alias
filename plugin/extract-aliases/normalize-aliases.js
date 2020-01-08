@@ -1,6 +1,6 @@
 const path = require('path')
 
-const normalizeAliases = ({ basePath, aliases }) => {
+const normalizeAliases = ({ absoluteBaseUrl, aliases }) => {
   const result = {}
 
   for (let aliasName in aliases) {
@@ -8,7 +8,7 @@ const normalizeAliases = ({ basePath, aliases }) => {
     const cleanAlias = aliases[aliasName].replace(/\/$/, '')
 
     // make alias path absolute
-    result[aliasName] = path.join(basePath, cleanAlias)
+    result[aliasName] = path.join(absoluteBaseUrl, cleanAlias)
   }
 
   return result
