@@ -1,7 +1,6 @@
 # craco-alias
 
 [![npm](https://img.shields.io/npm/v/craco-alias.svg)](https://www.npmjs.com/package/craco-alias)
-[![Travis (.com)](https://img.shields.io/travis/com/risenforces/craco-alias)](https://travis-ci.com/risenforces/craco-alias)
 
 A [craco](https://github.com/sharegate/craco) plugin for automatic aliases generation for Webpack and Jest.
 
