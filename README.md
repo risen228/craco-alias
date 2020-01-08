@@ -128,41 +128,57 @@ module.exports = {
 
 <details>
 <summary><b>Use aliases from tsconfig.json (source: "tsconfig")</b></summary>
+   
+1. Go to project's root directory.
 
-```js
-/* craco.config.js */
+2. Create `tsconfig.extend.json`.
 
-const CracoAlias = require("craco-alias");
+3. Edit it as follows:
 
-module.exports = {
-  plugins: [
-    {
-      plugin: CracoAlias,
-      options: {
-        source: "tsconfig",
-        // as you know, CRA doesn't allow to modify tsconfig's compilerOptions
-        // so you should create a separate JSON file and extend tsconfig.json from it
-        // and then just specify its path here:
-        tsConfigPath: "tsconfig.paths.json"
-      }
-    }
-  ]
-};
-```
+   ```js
+   {
+     "compilerOptions": {
+       "baseUrl": "src",
+       "paths": {
+         "@file-alias": ["./your/file.tsx"],
+         "@folder-alias/*": ["./very/long/path/*", "./very/long/path/"]
+       }
+     }
+   }
+   ```
 
-```js
-/* tsconfig.paths.json */
+4. Go to `tsconfig.json`.
 
-{
-  compilerOptions: {
-    baseUrl: "src",
-    paths: {
-      "@file": ["file.js"],
-      "@dir/*": ["dir/*", "dir"]
-    }
-  }
-}
-```
+5. Extend `tsconfig.json` from `tsconfig.extend.json`:
+
+   ```diff
+   {
+   + "extends": "./tsconfig.extend.json",
+     "compilerOptions": {
+       ...
+     },
+     ...
+   }
+   ```
+   
+6. Edit `craco.config.js`:
+
+   ```js
+   const CracoAlias = require("craco-alias");
+
+   module.exports = {
+     plugins: [
+       {
+         plugin: CracoAlias,
+         options: {
+           source: "tsconfig",
+           // tsConfigPath should point to the file where "baseUrl" and "paths" are specified
+           tsConfigPath: "./tsconfig.extend.json"
+         }
+       }
+     ]
+   };
+   ```
 
 </details>
 
