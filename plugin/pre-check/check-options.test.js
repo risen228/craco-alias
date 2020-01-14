@@ -85,4 +85,18 @@ describe('check-options', () => {
       'The "aliases" option should be an object'
     )
   })
+
+  test('should check "debug"', () => {
+    mockedCheck({
+      pluginOptions: {
+        source: 'options',
+        aliases: {},
+        debug: 35345
+      }
+    })
+
+    expect(handleErrorMock).toHaveBeenLastCalledWith(
+      'The "debug" option should be a boolean value'
+    )
+  })
 })

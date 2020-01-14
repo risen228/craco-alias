@@ -44,6 +44,12 @@ const checkOptions = ({ pluginOptions, handleError }) => {
         'The "aliases" option should be an object'
       )
   }
+
+  if (typeof options.debug !== 'boolean') {
+    return handleError(
+      'The "debug" option should be a boolean value'
+    )
+  }
 }
 
 module.exports = checkOptions
