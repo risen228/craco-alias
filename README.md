@@ -9,6 +9,7 @@ A [craco](https://github.com/sharegate/craco) plugin for automatic aliases gener
 - [Installation](#installation)
 - [Options](#options)
 - [Examples](#examples)
+- [Ran into a problem?](#ran-into-a-problem)
 
 ### Installation
 
@@ -41,21 +42,25 @@ A [craco](https://github.com/sharegate/craco) plugin for automatic aliases gener
 
 ### Options
 
-- `source`:
+- `source`:  
   One of `"options"`, `"jsconfig"`, `"tsconfig"`  
   Defaults to `"options"`
 
-- `baseUrl`:
-  A base url for aliases. (`./src` for example)
+- `baseUrl`:  
+  A base url for aliases. (`./src` for example)  
   Defaults to `./` (project root directory)
 
-- `aliases`:
+- `aliases`:  
   An object with aliases names and paths  
   Defaults to `{}`
 
-- `tsConfigPath`:
+- `tsConfigPath`:  
   A path to tsconfig file  
   Only required when `source` is set to `"tsconfig"`
+
+- `debug`:  
+  Enable it if you ran into a problem. It will log a useful info in console.  
+  Defaults to `false`
 
 ### Examples
 
@@ -113,7 +118,7 @@ module.exports = {
 };
 ```
 
-> **Note:** your jsconfig should always have `compilerOptions.paths` property. `baseUrl` is optional for plugin, but some IDEs and editors require it for intellisense. 
+> **Note:** your jsconfig should always have `compilerOptions.paths` property. `baseUrl` is optional for plugin, but some IDEs and editors require it for intellisense.
 
 ```js
 /* jsconfig.json */
@@ -166,7 +171,7 @@ module.exports = {
      ...
    }
    ```
-   
+
 6. Edit `craco.config.js`:
 
    ```js
@@ -190,3 +195,15 @@ module.exports = {
    ```
 
 </details>
+
+### Ran into a problem?
+
+1. Make sure your config is valid.
+
+2. Set `debug` to `true` in [options](#options).
+
+3. Run application again.
+
+4. Copy a printed info.
+
+5. [Here](https://github.com/risenforces/craco-alias/issues), create an issue describing your problem (do not forget to add the debug info).
