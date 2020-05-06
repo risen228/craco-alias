@@ -7,4 +7,8 @@ assignees: ''
 
 ---
 
-Follow [these](https://github.com/risenforces/craco-alias#ran-into-a-problem) steps, then describe your problem and paste the plugin output here.
+Follow these steps:
+
+https://github.com/risenforces/craco-alias#ran-into-a-problem
+
+Then describe your problem and paste the plugin output.
