@@ -128,7 +128,9 @@ module.exports = {
     baseUrl: "src",
     paths: {
       "@file": ["file.js"],
-      "@dir/*": ["dir/*", "dir"]
+      "@dir/*": ["dir/*", "dir"],
+      // specifying types folder can be good for VSCode and maybe some other editors
+      "@package-alias": ["./node_modules/react/", "./node_modules/@types/react/"]
     }
   }
 }
