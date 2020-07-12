@@ -152,7 +152,8 @@ module.exports = {
        "baseUrl": "src",
        "paths": {
          "@file-alias": ["./your/file.tsx"],
-         "@folder-alias/*": ["./very/long/path/*", "./very/long/path/"]
+         "@folder-alias/*": ["./very/long/path/*", "./very/long/path/"],
+         "@package-alias": ["./node_modules/react/", "./node_modules/@types/react/"]
        }
      }
    }
