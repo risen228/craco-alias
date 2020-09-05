@@ -124,13 +124,28 @@ module.exports = {
 /* jsconfig.json */
 
 {
-  compilerOptions: {
-    baseUrl: "src",
-    paths: {
-      "@file": ["file.js"],
-      "@dir/*": ["dir/*", "dir"],
-      // specifying types folder can be good for VSCode and maybe some other editors
-      "@package-alias": ["./node_modules/react/", "./node_modules/@types/react/"]
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      // file aliases
+      "@baz": ["./baz.js"],
+      "@boo": ["./boo.jsx"],
+
+      // folder aliases
+      "@root": ["./"],
+      "@root/*": ["./*"],
+      "@lib": ["./lib"],
+      "@lib/*": ["./lib/*"],
+
+      // package aliases (types is optional without ts)
+      "@my-react-select": [
+        "../node_modules/react-select",
+        "../node_modules/@types/react-select"
+      ],
+      "@my-react-select/*": [
+        "../node_modules/react-select/*",
+        "../node_modules/@types/react-select"
+      ]
     }
   }
 }
@@ -146,16 +161,31 @@ module.exports = {
 2. Create `tsconfig.extend.json`.
 
 3. Edit it as follows:
-
+   
    ```js
    {
      "compilerOptions": {
-       // baseUrl is optional for plugin, but some IDEs require it
-       "baseUrl": "src",
+       "baseUrl": "./src",
        "paths": {
-         "@file-alias": ["./your/file.tsx"],
-         "@folder-alias/*": ["./very/long/path/*", "./very/long/path/"],
-         "@package-alias": ["./node_modules/react/", "./node_modules/@types/react/"]
+         // file aliases
+         "@baz": ["./baz.ts"],
+         "@boo": ["./boo.tsx"],
+
+         // folder aliases
+         "@root": ["./"],
+         "@root/*": ["./*"],
+         "@lib": ["./lib"],
+         "@lib/*": ["./lib/*"],
+
+         // package aliases
+         "@my-react-select": [
+           "../node_modules/react-select",
+           "../node_modules/@types/react-select"
+         ],
+         "@my-react-select/*": [
+           "../node_modules/react-select/*",
+           "../node_modules/@types/react-select"
+         ]
        }
      }
    }
