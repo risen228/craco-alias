@@ -8,7 +8,7 @@ const checkConfigContents = ({
   try {
     config = JSON.parse(unparsedConfig)
   } catch (err) {
-    return handleError(`Cannot parse ${configFileName}`)
+    return handleError(`Cannot parse ${configFileName}. Please validate it on https://jsonformatter.curiousconcept.com.`)
   }
 
   if (!config.compilerOptions)
