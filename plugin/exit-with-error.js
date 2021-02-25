@@ -2,7 +2,7 @@ const exitWithError = message => {
   console.log('\x1b[31m%s\x1b[0m', message)
 
   console.log(
-    '\nPlease read plugin documentation:',
+    '\nPlugin documentation:',
     '\x1b[34mhttps://github.com/risenforces/craco-alias\x1b[0m'
   )
 
