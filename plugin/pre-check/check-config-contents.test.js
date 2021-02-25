@@ -18,7 +18,7 @@ describe('check-config-contents', () => {
     })
 
     expect(handleErrorMock).toHaveBeenLastCalledWith(
-      `Cannot parse ${configFileName}`
+      `Cannot parse ${configFileName}. Please validate it on https://jsonformatter.curiousconcept.com.`
     )
   })
 
