@@ -6,8 +6,16 @@ const { searchObject, printBaseData, printObject } = require('./debug')
 const createOverrider = (cb, debugInfo) => cracoOptions => {
   preCheck(cracoOptions)
 
-  const options = normalizePluginOptions(cracoOptions.pluginOptions)
-  const aliases = extractAliases(cracoOptions)
+  const { filters, ...options } = normalizePluginOptions(
+    cracoOptions.pluginOptions
+  )
+
+  let aliases = extractAliases(cracoOptions)
+  if (Array.isArray(filters) && filters.length > 0) {
+    aliases = Object.entries(aliases)
+      .filter(([k]) => !filters.includes(k))
+      .reduce((o, [k, v]) => ({ ...o, [k]: v }), {})
+  }
 
   if (options.debug) {
     printBaseData({

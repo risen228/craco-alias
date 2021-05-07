@@ -50,6 +50,12 @@ const checkOptions = ({ pluginOptions, handleError }) => {
       'The "debug" option should be a boolean value'
     )
   }
+
+  if (!Array.isArray(options.filters)) {
+    return handleError(
+      'The "filters" option should be a array value'
+    )
+  }
 }
 
 module.exports = checkOptions
