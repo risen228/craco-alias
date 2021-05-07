@@ -7,7 +7,7 @@ describe('normalize-plugin-options', () => {
       baseUrl: './',
       aliases: {},
       debug: false,
-      filters: []
+      filter: expect.any(Function)
     })
 
     expect(normalize({})).toEqual({
@@ -15,7 +15,7 @@ describe('normalize-plugin-options', () => {
       baseUrl: './',
       aliases: {},
       debug: false,
-      filters: []
+      filter: expect.any(Function)
     })
   })
 
@@ -30,7 +30,7 @@ describe('normalize-plugin-options', () => {
       source: 'jsconfig',
       baseUrl: './',
       debug: false,
-      filters: []
+      filter: expect.any(Function)
     })
   })
 
@@ -46,7 +46,7 @@ describe('normalize-plugin-options', () => {
       baseUrl: './',
       tsConfigPath: 'tsconfig.paths.json',
       debug: false,
-      filters: []
+      filter: expect.any(Function)
     })
   })
 
@@ -66,7 +66,7 @@ describe('normalize-plugin-options', () => {
         '@file': './file.js'
       },
       debug: false,
-      filters: []
+      filter: expect.any(Function)
     })
   })
 })

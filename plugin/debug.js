@@ -41,13 +41,20 @@ function exit() {
 
 const debouncedExit = debounce(exit, 70)
 
-function printBaseData({ initialOptions, normalizedOptions, aliases }) {
+function printBaseData({
+  initialOptions,
+  normalizedOptions,
+  initialAliases,
+  aliases
+}) {
   if (state.wasOptionsPrinted) return
 
   console.log(blue('Initial options:') + '\n')
   console.log(JSON.stringify(initialOptions, null, 2) + '\n')
   console.log(blue('Normalized options:') + '\n')
   console.log(JSON.stringify(normalizedOptions, null, 2) + '\n')
+  console.log(blue('Initial aliases:') + '\n')
+  console.log(JSON.stringify(initialAliases, null, 2) + '\n')
   console.log(blue('Aliases:') + '\n')
   console.log(JSON.stringify(aliases, null, 2) + '\n')
 

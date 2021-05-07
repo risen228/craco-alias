@@ -7,6 +7,7 @@ const exitWithError = require('./exit-with-error')
  * @property {string} baseUrl
  * @property {Object.<string, string>} aliases
  * @property {string} [tsConfigPath]
+ * @property {() => true} [filter]
  */
 
 /**
@@ -20,7 +21,7 @@ const normalizePluginOptions = originalOptions => {
       baseUrl: './',
       aliases: {},
       debug: false,
-      filters: []
+      filter: () => true
     }
 
   const {
@@ -29,7 +30,7 @@ const normalizePluginOptions = originalOptions => {
     tsConfigPath,
     aliases = {},
     debug = false,
-    filters = []
+    filter = () => true
   } = originalOptions
 
   if (source === 'jsconfig')
@@ -37,7 +38,7 @@ const normalizePluginOptions = originalOptions => {
       source,
       baseUrl,
       debug,
-      filters
+      filter
     }
 
   if (source === 'tsconfig')
@@ -46,7 +47,7 @@ const normalizePluginOptions = originalOptions => {
       baseUrl,
       tsConfigPath,
       debug,
-      filters
+      filter
     }
 
   return {
@@ -54,7 +55,7 @@ const normalizePluginOptions = originalOptions => {
     baseUrl,
     aliases,
     debug,
-    filters
+    filter
   }
 }
 

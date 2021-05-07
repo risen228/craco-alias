@@ -2,25 +2,20 @@ const preCheck = require('./pre-check')
 const normalizePluginOptions = require('./normalize-plugin-options')
 const extractAliases = require('./extract-aliases')
 const { searchObject, printBaseData, printObject } = require('./debug')
+const { filterAliases } = require('./filter-aliases')
 
 const createOverrider = (cb, debugInfo) => cracoOptions => {
   preCheck(cracoOptions)
 
-  const { filters, ...options } = normalizePluginOptions(
-    cracoOptions.pluginOptions
-  )
-
-  let aliases = extractAliases(cracoOptions)
-  if (Array.isArray(filters) && filters.length > 0) {
-    aliases = Object.entries(aliases)
-      .filter(([k]) => !filters.includes(k))
-      .reduce((o, [k, v]) => ({ ...o, [k]: v }), {})
-  }
+  const options = normalizePluginOptions(cracoOptions.pluginOptions)
+  const initialAliases = extractAliases(cracoOptions)
+  const aliases = filterAliases(initialAliases, options.filter)
 
   if (options.debug) {
     printBaseData({
       initialOptions: cracoOptions.pluginOptions,
       normalizedOptions: options,
+      initialAliases,
       aliases
     })
   }

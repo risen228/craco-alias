@@ -86,16 +86,16 @@ describe('check-options', () => {
     )
   })
 
-  test('should check "filters" when source is "options"', () => {
+  test('should check "filter"', () => {
     mockedCheck({
       pluginOptions: {
         source: 'options',
-        filters: 35345
+        filter: 35345
       }
     })
 
     expect(handleErrorMock).toHaveBeenLastCalledWith(
-      'The "filters" option should be a array value'
+      'The "filter" option should be a function'
     )
   })
 

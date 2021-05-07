@@ -51,9 +51,9 @@ const checkOptions = ({ pluginOptions, handleError }) => {
     )
   }
 
-  if (!Array.isArray(options.filters)) {
+  if (typeof options.filter !== 'function') {
     return handleError(
-      'The "filters" option should be a array value'
+      'The "filter" option should be a function'
     )
   }
 }

@@ -58,6 +58,11 @@ A [craco](https://github.com/sharegate/craco) plugin for automatic aliases gener
   A path to tsconfig file  
   Only required when `source` is set to `"tsconfig"`
 
+- `filter`:
+  A function of type `([key, value]) => boolean`  
+  Optional, used to remove some aliases from the resulting config  
+  Example: `([key]) => !key.startsWith('node_modules')`
+
 - `debug`:  
   Enable it if you ran into a problem. It will log a useful info in console.  
   Defaults to `false`
