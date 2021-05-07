@@ -19,7 +19,8 @@ const normalizePluginOptions = originalOptions => {
       source: 'options',
       baseUrl: './',
       aliases: {},
-      debug: false
+      debug: false,
+      filters: []
     }
 
   const {
@@ -27,14 +28,16 @@ const normalizePluginOptions = originalOptions => {
     baseUrl = './',
     tsConfigPath,
     aliases = {},
-    debug = false
+    debug = false,
+    filters = []
   } = originalOptions
 
   if (source === 'jsconfig')
     return {
       source,
       baseUrl,
-      debug
+      debug,
+      filters
     }
 
   if (source === 'tsconfig')
@@ -42,14 +45,16 @@ const normalizePluginOptions = originalOptions => {
       source,
       baseUrl,
       tsConfigPath,
-      debug
+      debug,
+      filters
     }
 
   return {
     source,
     baseUrl,
     aliases,
-    debug
+    debug,
+    filters
   }
 }
 
