@@ -1,7 +1,5 @@
 function filterAliases(aliases, filter) {
-  const entries = Object.entries(aliases)
-  const filteredEntries = entries.filter(filter)
-  return Object.fromEntries(filteredEntries)
+  return Object.fromEntries(Object.entries(aliases).filter(filter))
 }
 
 exports.filterAliases = filterAliases
