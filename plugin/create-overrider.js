@@ -2,7 +2,7 @@ const preCheck = require('./pre-check')
 const normalizePluginOptions = require('./normalize-plugin-options')
 const extractAliases = require('./extract-aliases')
 const { searchObject, printBaseData, printObject } = require('./debug')
-const { filterAliases } = require('./filter-aliases');
+const { filterAliases } = require('./filter-aliases');;
 
 const createOverrider = (callback, debugInfo) => (cracoOptions) => {
   preCheck(cracoOptions)
