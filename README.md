@@ -22,6 +22,10 @@ A [craco](https://github.com/sharegate/craco) plugin for automatic aliases gener
    npm i -D craco-alias
    ```
 
+   ```sh
+   yarn add -D craco-alias
+   ```
+
 3. Edit `craco.config.js`:
 
    ```js
