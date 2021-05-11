@@ -1,8 +1,14 @@
 {
+  "env": {
+    "jest": true
+  },
+  "extends": [
+    "@eslint-kit/base",
+    "@eslint-kit/node",
+    "@eslint-kit/prettier"
+  ],
   "parser": "babel-eslint",
   "rules": {
-    "indent": ["warn", 2, { "SwitchCase": 1 }],
-    "semi": ["warn", "never"],
-    "quotes": ["warn", "single"]
+    "no-console": "off"
   }
 }
