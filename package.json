@@ -32,20 +32,7 @@
     "@eslint-kit/eslint-config-prettier": "^2.0.0",
     "babel-eslint": "10.1.0",
     "eslint": "7.10.0",
-    "husky": "^6.0.0",
     "jest": "^24.9.0",
-    "lint-staged": "^11.0.0",
     "prettier": "2.2.1"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "**/*.js": [
-      "eslint --fix",
-      "git add"
-    ]
   }
 }
