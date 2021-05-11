@@ -5,17 +5,19 @@ describe('normalize-plugin-options', () => {
     expect(normalize(undefined)).toEqual({
       source: 'options',
       baseUrl: './',
-      aliases: {},
+      aliases: null,
       debug: false,
       filter: expect.any(Function),
+      unsafeAllowModulesOutsideOfSrc: false,
     })
 
     expect(normalize({})).toEqual({
       source: 'options',
       baseUrl: './',
-      aliases: {},
+      aliases: null,
       debug: false,
       filter: expect.any(Function),
+      unsafeAllowModulesOutsideOfSrc: false,
     })
   })
 
@@ -31,6 +33,7 @@ describe('normalize-plugin-options', () => {
       baseUrl: './',
       debug: false,
       filter: expect.any(Function),
+      unsafeAllowModulesOutsideOfSrc: false,
     })
   })
 
@@ -47,6 +50,7 @@ describe('normalize-plugin-options', () => {
       tsConfigPath: 'tsconfig.paths.json',
       debug: false,
       filter: expect.any(Function),
+      unsafeAllowModulesOutsideOfSrc: false,
     })
   })
 
@@ -58,6 +62,8 @@ describe('normalize-plugin-options', () => {
         aliases: {
           '@file': './file.js',
         },
+        filter: () => true,
+        unsafeAllowModulesOutsideOfSrc: true,
       })
     ).toEqual({
       source: 'options',
@@ -67,6 +73,7 @@ describe('normalize-plugin-options', () => {
       },
       debug: false,
       filter: expect.any(Function),
+      unsafeAllowModulesOutsideOfSrc: true,
     })
   })
 })

@@ -1,37 +1,72 @@
 const check = require('./check-options')
 
-describe('check-options', () => {
-  const handleErrorMock = jest.fn(() => {})
+let handleErrorMock = jest.fn(() => {})
 
-  const mockedCheck = ({ pluginOptions }) =>
+beforeEach(() => {
+  handleErrorMock = jest.fn(() => {})
+})
+
+describe('check-options', () => {
+  const mockedCheck = (pluginOptions) =>
     check({
       pluginOptions,
       handleError: handleErrorMock,
     })
 
   test('should check pluginOptions type', () => {
-    mockedCheck({
-      pluginOptions: undefined,
-    })
+    mockedCheck(undefined)
 
     expect(handleErrorMock).toHaveBeenLastCalledWith(
       'Plugin options should be specified'
     )
 
-    mockedCheck({
-      pluginOptions: 123,
-    })
+    mockedCheck(123)
 
     expect(handleErrorMock).toHaveBeenLastCalledWith(
       'Plugin options should be an object'
     )
   })
 
+  test('should not fail on a valid config', () => {
+    mockedCheck({
+      aliases: {},
+    })
+
+    mockedCheck({
+      source: 'options',
+      aliases: {},
+    })
+
+    mockedCheck({
+      source: 'options',
+      aliases: {},
+    })
+
+    mockedCheck({
+      source: 'tsconfig',
+      tsConfigPath: 'foo',
+    })
+
+    mockedCheck({
+      source: 'jsconfig',
+    })
+
+    mockedCheck({
+      aliases: {},
+      filter: () => true,
+    })
+
+    mockedCheck({
+      aliases: {},
+      unsafeAllowModulesOutsideOfSrc: true,
+    })
+
+    expect(handleErrorMock).toHaveBeenCalledTimes(0)
+  })
+
   test('should check pluginOptions.source', () => {
     mockedCheck({
-      pluginOptions: {
-        source: 'unknown-source',
-      },
+      source: 'unknown-source',
     })
 
     const availableSources = ['jsconfig', 'tsconfig', 'options']
@@ -48,9 +83,7 @@ describe('check-options', () => {
 
   test('should check "tsConfigPath" when source is "tsconfig"', () => {
     mockedCheck({
-      pluginOptions: {
-        source: 'tsconfig',
-      },
+      source: 'tsconfig',
     })
 
     expect(handleErrorMock).toHaveBeenLastCalledWith(
@@ -61,10 +94,8 @@ describe('check-options', () => {
 
   test('should check "baseUrl" when source is "options"', () => {
     mockedCheck({
-      pluginOptions: {
-        source: 'options',
-        baseUrl: 345345,
-      },
+      source: 'options',
+      baseUrl: 345345,
     })
 
     expect(handleErrorMock).toHaveBeenLastCalledWith(
@@ -74,23 +105,30 @@ describe('check-options', () => {
 
   test('should check "aliases" when source is "options"', () => {
     mockedCheck({
-      pluginOptions: {
-        source: 'options',
-        aliases: null,
-      },
+      source: 'options',
     })
 
     expect(handleErrorMock).toHaveBeenLastCalledWith(
-      'The "aliases" option should be an object'
+      'The "source" option is set to "options",' +
+        ' but option "aliases" is missing or has incorrect value'
+    )
+
+    mockedCheck({
+      source: 'options',
+      aliases: 123,
+    })
+
+    expect(handleErrorMock).toHaveBeenLastCalledWith(
+      'The "source" option is set to "options",' +
+        ' but option "aliases" is missing or has incorrect value'
     )
   })
 
   test('should check "filter"', () => {
     mockedCheck({
-      pluginOptions: {
-        source: 'options',
-        filter: 35345,
-      },
+      source: 'options',
+      aliases: {},
+      filter: 35345,
     })
 
     expect(handleErrorMock).toHaveBeenLastCalledWith(
@@ -98,13 +136,23 @@ describe('check-options', () => {
     )
   })
 
+  test('should check "unsafeAllowModulesOutsideOfSrc"', () => {
+    mockedCheck({
+      source: 'options',
+      aliases: {},
+      unsafeAllowModulesOutsideOfSrc: 35345,
+    })
+
+    expect(handleErrorMock).toHaveBeenLastCalledWith(
+      'The "unsafeAllowModulesOutsideOfSrc" option should be a boolean value'
+    )
+  })
+
   test('should check "debug"', () => {
     mockedCheck({
-      pluginOptions: {
-        source: 'options',
-        aliases: {},
-        debug: 35345,
-      },
+      source: 'options',
+      aliases: {},
+      debug: 35345,
     })
 
     expect(handleErrorMock).toHaveBeenLastCalledWith(

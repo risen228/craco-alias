@@ -6,6 +6,7 @@
  * @property {Object.<string, string>} aliases
  * @property {string} [tsConfigPath]
  * @property {() => true} [filter]
+ * @property {boolean} [unsafeAllowModulesOutsideOfSrc]
  */
 
 /**
@@ -17,18 +18,20 @@ const normalizePluginOptions = (originalOptions) => {
     return {
       source: 'options',
       baseUrl: './',
-      aliases: {},
+      aliases: null,
       debug: false,
       filter: () => true,
+      unsafeAllowModulesOutsideOfSrc: false,
     }
 
   const {
     source = 'options',
     baseUrl = './',
     tsConfigPath,
-    aliases = {},
+    aliases = null,
     debug = false,
     filter = () => true,
+    unsafeAllowModulesOutsideOfSrc = false,
   } = originalOptions
 
   if (source === 'jsconfig')
@@ -37,6 +40,7 @@ const normalizePluginOptions = (originalOptions) => {
       baseUrl,
       debug,
       filter,
+      unsafeAllowModulesOutsideOfSrc,
     }
 
   if (source === 'tsconfig')
@@ -46,6 +50,7 @@ const normalizePluginOptions = (originalOptions) => {
       tsConfigPath,
       debug,
       filter,
+      unsafeAllowModulesOutsideOfSrc,
     }
 
   return {
@@ -54,6 +59,7 @@ const normalizePluginOptions = (originalOptions) => {
     aliases,
     debug,
     filter,
+    unsafeAllowModulesOutsideOfSrc,
   }
 }
 

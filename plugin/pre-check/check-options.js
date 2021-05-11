@@ -40,7 +40,10 @@ const checkOptions = ({ pluginOptions, handleError }) => {
     }
 
     if (typeof options.aliases !== 'object' || options.aliases === null)
-      return handleError('The "aliases" option should be an object')
+      return handleError(
+        'The "source" option is set to "options",' +
+          ' but option "aliases" is missing or has incorrect value'
+      )
   }
 
   if (typeof options.debug !== 'boolean') {
@@ -49,6 +52,12 @@ const checkOptions = ({ pluginOptions, handleError }) => {
 
   if (typeof options.filter !== 'function') {
     return handleError('The "filter" option should be a function')
+  }
+
+  if (typeof options.unsafeAllowModulesOutsideOfSrc !== 'boolean') {
+    return handleError(
+      'The "unsafeAllowModulesOutsideOfSrc" option should be a boolean value'
+    )
   }
 }
 

@@ -49,15 +49,15 @@ A [craco](https://github.com/sharegate/craco) plugin for automatic aliases gener
 
 - `source`:  
   One of `"options"`, `"jsconfig"`, `"tsconfig"`  
-  Defaults to `"options"`
+  Optional, defaults to `"options"`
 
 - `baseUrl`:  
   A base url for aliases. (`./src` for example)  
-  Defaults to `./` (project root directory)
+  Optional, defaults to `./` (project root directory)
 
 - `aliases`:  
   An object with aliases names and paths  
-  Defaults to `{}`
+  Only required when `source` is set to `"options"`
 
 - `tsConfigPath`:  
   A path to tsconfig file  
@@ -68,9 +68,13 @@ A [craco](https://github.com/sharegate/craco) plugin for automatic aliases gener
   Optional, used to remove some aliases from the resulting config  
   Example: `([key]) => !key.startsWith('node_modules')`
 
+- `unsafeAllowModulesOutsideOfSrc`:  
+  Allow importing modules outside of `./src` folder.  
+  Disables webpack `ModuleScopePlugin`.
+
 - `debug`:  
   Enable it if you ran into a problem. It will log a useful info in console.  
-  Defaults to `false`
+  Optional, defaults to `false`
 
 ### Examples
 
