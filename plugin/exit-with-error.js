@@ -1,5 +1,5 @@
 const exitWithError = (message) => {
-  console.log('\u001B[31m%s\u001B[0m', message)
+  console.log('\u001B[31m%s\u001B[0m', '[Craco-Alias Error]', message)
 
   console.log(
     '\nPlugin documentation:',
