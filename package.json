@@ -31,6 +31,7 @@
     "@eslint-kit/eslint-config-base": "^3.2.0",
     "@eslint-kit/eslint-config-node": "^2.0.0",
     "@eslint-kit/eslint-config-prettier": "^2.0.0",
+    "@types/jest": "^26.0.23",
     "babel-eslint": "10.1.0",
     "eslint": "7.10.0",
     "husky": "^6.0.0",
