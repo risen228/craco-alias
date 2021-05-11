@@ -10,6 +10,7 @@ A [craco](https://github.com/sharegate/craco) plugin for automatic aliases gener
 - [Options](#options)
 - [Examples](#examples)
 - [Ran into a problem?](#ran-into-a-problem)
+- [If you want to help](#if-you-want-to-help)
 
 ### Installation
 
@@ -245,3 +246,19 @@ module.exports = {
 4. Copy a printed info.
 
 5. [Here](https://github.com/risenforces/craco-alias/issues), create an issue describing your problem (do not forget to add the debug info).
+
+### If you want to help
+
+Install:
+
+```sh
+yarn
+```
+
+> Use yarn please. npm may fail the dependencies installation.
+
+Run tests:
+
+```
+yarn test
+```
