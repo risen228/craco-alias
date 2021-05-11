@@ -15,7 +15,7 @@ const checkOptions = ({ pluginOptions, handleError }) => {
 
   if (!availableSources.includes(options.source)) {
     const availableSourcesString = availableSources
-      .map(s => `"${s}"`)
+      .map((s) => `"${s}"`)
       .join(', ')
 
     return handleError(
@@ -24,37 +24,31 @@ const checkOptions = ({ pluginOptions, handleError }) => {
     )
   }
 
-  if (options.source === 'tsconfig') {
-    if (typeof options.tsConfigPath !== 'string')
-      return handleError(
-        'The "source" option is set to "tsconfig",' +
-          ' but option "tsConfigPath" is missing or has incorrect value'
-      )
+  if (
+    options.source === 'tsconfig' &&
+    typeof options.tsConfigPath !== 'string'
+  ) {
+    return handleError(
+      'The "source" option is set to "tsconfig",' +
+        ' but option "tsConfigPath" is missing or has incorrect value'
+    )
   }
 
   if (options.source === 'options') {
     if (typeof options.baseUrl !== 'string') {
-      return handleError(
-        'The "baseUrl" option should be a string'
-      )
+      return handleError('The "baseUrl" option should be a string')
     }
 
     if (typeof options.aliases !== 'object' || options.aliases === null)
-      return handleError(
-        'The "aliases" option should be an object'
-      )
+      return handleError('The "aliases" option should be an object')
   }
 
   if (typeof options.debug !== 'boolean') {
-    return handleError(
-      'The "debug" option should be a boolean value'
-    )
+    return handleError('The "debug" option should be a boolean value')
   }
 
   if (typeof options.filter !== 'function') {
-    return handleError(
-      'The "filter" option should be a function'
-    )
+    return handleError('The "filter" option should be a function')
   }
 }
 

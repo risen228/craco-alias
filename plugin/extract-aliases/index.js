@@ -11,14 +11,14 @@ const extractAliasesFromConfig = ({ configPath, absoluteBaseUrl }) => {
 
   const standardAliases = {}
 
-  for (let aliasName in compilerOptions.paths) {
+  for (const aliasName in compilerOptions.paths) {
     const [aliasPath] = compilerOptions.paths[aliasName]
     standardAliases[aliasName.replace('/*', '')] = aliasPath.replace('/*', '')
   }
 
   return normalizeAliases({
     absoluteBaseUrl,
-    aliases: standardAliases
+    aliases: standardAliases,
   })
 }
 
@@ -33,19 +33,19 @@ const extractAliases = ({ pluginOptions, context: { paths } }) => {
   if (options.source === 'jsconfig')
     return extractAliasesFromConfig({
       configPath: paths.appJsConfig,
-      absoluteBaseUrl
+      absoluteBaseUrl,
     })
 
   if (options.source === 'tsconfig')
     return extractAliasesFromConfig({
       configPath: options.tsConfigPath,
-      absoluteBaseUrl
+      absoluteBaseUrl,
     })
 
   if (options.source === 'options')
     return normalizeAliases({
       absoluteBaseUrl,
-      aliases: options.aliases
+      aliases: options.aliases,
     })
 }
 

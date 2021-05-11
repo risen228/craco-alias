@@ -4,7 +4,7 @@ const checkConfigExistence = ({
   configName,
   configFileName,
   configPath,
-  handleError
+  handleError,
 }) => {
   const isExist = fs.existsSync(configPath)
 

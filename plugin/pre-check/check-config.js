@@ -12,7 +12,7 @@ const checkConfig = ({ configName, configPath }) => {
     configName,
     configFileName,
     configPath,
-    handleError: exitWithError
+    handleError: exitWithError,
   })
 
   const unparsedConfig = fs.readFileSync(configPath)
@@ -20,7 +20,7 @@ const checkConfig = ({ configName, configPath }) => {
   checkConfigContents({
     unparsedConfig,
     configFileName,
-    handleError: exitWithError
+    handleError: exitWithError,
   })
 }
 

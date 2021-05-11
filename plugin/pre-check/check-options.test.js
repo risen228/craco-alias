@@ -1,18 +1,17 @@
-const path = require('path')
 const check = require('./check-options')
 
 describe('check-options', () => {
-  const handleErrorMock = jest.fn(message => {})
+  const handleErrorMock = jest.fn(() => {})
 
   const mockedCheck = ({ pluginOptions }) =>
     check({
       pluginOptions,
-      handleError: handleErrorMock
+      handleError: handleErrorMock,
     })
 
   test('should check pluginOptions type', () => {
     mockedCheck({
-      pluginOptions: undefined
+      pluginOptions: undefined,
     })
 
     expect(handleErrorMock).toHaveBeenLastCalledWith(
@@ -20,7 +19,7 @@ describe('check-options', () => {
     )
 
     mockedCheck({
-      pluginOptions: 123
+      pluginOptions: 123,
     })
 
     expect(handleErrorMock).toHaveBeenLastCalledWith(
@@ -31,14 +30,14 @@ describe('check-options', () => {
   test('should check pluginOptions.source', () => {
     mockedCheck({
       pluginOptions: {
-        source: 'unknown-source'
-      }
+        source: 'unknown-source',
+      },
     })
 
     const availableSources = ['jsconfig', 'tsconfig', 'options']
 
     const availableSourcesString = availableSources
-      .map(s => `"${s}"`)
+      .map((s) => `"${s}"`)
       .join(', ')
 
     expect(handleErrorMock).toHaveBeenLastCalledWith(
@@ -50,8 +49,8 @@ describe('check-options', () => {
   test('should check "tsConfigPath" when source is "tsconfig"', () => {
     mockedCheck({
       pluginOptions: {
-        source: 'tsconfig'
-      }
+        source: 'tsconfig',
+      },
     })
 
     expect(handleErrorMock).toHaveBeenLastCalledWith(
@@ -64,8 +63,8 @@ describe('check-options', () => {
     mockedCheck({
       pluginOptions: {
         source: 'options',
-        baseUrl: 345345
-      }
+        baseUrl: 345345,
+      },
     })
 
     expect(handleErrorMock).toHaveBeenLastCalledWith(
@@ -77,8 +76,8 @@ describe('check-options', () => {
     mockedCheck({
       pluginOptions: {
         source: 'options',
-        aliases: null
-      }
+        aliases: null,
+      },
     })
 
     expect(handleErrorMock).toHaveBeenLastCalledWith(
@@ -90,8 +89,8 @@ describe('check-options', () => {
     mockedCheck({
       pluginOptions: {
         source: 'options',
-        filter: 35345
-      }
+        filter: 35345,
+      },
     })
 
     expect(handleErrorMock).toHaveBeenLastCalledWith(
@@ -104,8 +103,8 @@ describe('check-options', () => {
       pluginOptions: {
         source: 'options',
         aliases: {},
-        debug: 35345
-      }
+        debug: 35345,
+      },
     })
 
     expect(handleErrorMock).toHaveBeenLastCalledWith(

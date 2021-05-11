@@ -1,7 +1,7 @@
 const check = require('./check-config-existence')
 
 describe('check-config-existence', () => {
-  const handleErrorMock = jest.fn(message => {})
+  const handleErrorMock = jest.fn(() => {})
 
   test('should check config existence', () => {
     const configName = 'some-config'
@@ -12,7 +12,7 @@ describe('check-config-existence', () => {
       configName,
       configFileName,
       configPath,
-      handleError: handleErrorMock
+      handleError: handleErrorMock,
     })
 
     expect(handleErrorMock).toHaveBeenLastCalledWith(

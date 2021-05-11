@@ -1,7 +1,7 @@
 const check = require('./check-config-contents')
 
 describe('check-config-contents', () => {
-  const handleErrorMock = jest.fn(message => {})
+  const handleErrorMock = jest.fn(() => {})
 
   const configFileName = 'some-config.json'
 
@@ -9,12 +9,12 @@ describe('check-config-contents', () => {
     check({
       unparsedConfig,
       configFileName,
-      handleError: handleErrorMock
+      handleError: handleErrorMock,
     })
 
   test('should try to parse config contents', () => {
     mockedCheck({
-      unparsedConfig: 'invalid-json'
+      unparsedConfig: 'invalid-json',
     })
 
     expect(handleErrorMock).toHaveBeenLastCalledWith(
@@ -22,9 +22,9 @@ describe('check-config-contents', () => {
     )
   })
 
-  const handyMockedCheck = parsedConfig =>
+  const handyMockedCheck = (parsedConfig) =>
     mockedCheck({
-      unparsedConfig: JSON.stringify(parsedConfig, null, 2)
+      unparsedConfig: JSON.stringify(parsedConfig, null, 2),
     })
 
   test('should check config contents', () => {
@@ -36,8 +36,8 @@ describe('check-config-contents', () => {
 
     handyMockedCheck({
       compilerOptions: {
-        baseUrl: 'src'
-      }
+        baseUrl: 'src',
+      },
     })
 
     expect(handleErrorMock).toHaveBeenLastCalledWith(

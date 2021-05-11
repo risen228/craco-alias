@@ -9,13 +9,13 @@ module.exports = {
         ...webpackConfig.resolve,
         alias: {
           ...webpackConfig.resolve.alias,
-          ...aliases
-        }
-      }
+          ...aliases,
+        },
+      },
     }),
     {
       name: 'Webpack Config',
-      aliasesPath: 'resolve.alias'
+      aliasesPath: 'resolve.alias',
     }
   ),
   overrideJestConfig: createOverrider(
@@ -23,12 +23,12 @@ module.exports = {
       ...jestConfig,
       moduleNameMapper: {
         ...jestConfig.moduleNameMapper,
-        ...generateModuleNameMapper({ aliases })
-      }
+        ...generateModuleNameMapper({ aliases }),
+      },
     }),
     {
       name: 'Jest Config',
-      aliasesPath: 'moduleNameMapper'
+      aliasesPath: 'moduleNameMapper',
     }
-  )
+  ),
 }

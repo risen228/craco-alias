@@ -1,14 +1,16 @@
 const checkConfigContents = ({
   unparsedConfig,
   configFileName,
-  handleError
+  handleError,
 }) => {
   let config
 
   try {
     config = JSON.parse(unparsedConfig)
-  } catch (err) {
-    return handleError(`Cannot parse ${configFileName}. Please validate it on https://jsonformatter.curiousconcept.com.`)
+  } catch (error) {
+    return handleError(
+      `Cannot parse ${configFileName}. Please validate it on https://jsonformatter.curiousconcept.com.`
+    )
   }
 
   if (!config.compilerOptions)

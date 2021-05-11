@@ -6,7 +6,7 @@ test('filter-aliases', () => {
       {
         '@my-alias-one': 'sdfsdfsdf',
         '@my-alias-two': '123123',
-        '@my-alias-three:': '321'
+        '@my-alias-three:': '321',
       },
       ([key, value]) => {
         if (key === '@my-alias-one') return false
@@ -15,6 +15,6 @@ test('filter-aliases', () => {
       }
     )
   ).toEqual({
-    '@my-alias-two': '123123'
+    '@my-alias-two': '123123',
   })
 })

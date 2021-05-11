@@ -1,6 +1,3 @@
-const fs = require('fs')
-const path = require('path')
-
 const normalizePluginOptions = require('../normalize-plugin-options')
 const exitWithError = require('../exit-with-error')
 const checkOptions = require('./check-options')
@@ -9,7 +6,7 @@ const checkConfig = require('./check-config')
 const preCheck = ({ pluginOptions, context: { paths } }) => {
   checkOptions({
     pluginOptions,
-    handleError: exitWithError
+    handleError: exitWithError,
   })
 
   const options = normalizePluginOptions(pluginOptions)
@@ -17,13 +14,13 @@ const preCheck = ({ pluginOptions, context: { paths } }) => {
   if (options.source === 'jsconfig')
     checkConfig({
       configName: 'jsconfig',
-      configPath: paths.appJsConfig
+      configPath: paths.appJsConfig,
     })
 
   if (options.source === 'tsconfig')
     checkConfig({
       configName: 'tsconfig',
-      configPath: options.tsConfigPath
+      configPath: options.tsConfigPath,
     })
 }
 

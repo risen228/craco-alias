@@ -1,5 +1,3 @@
-const exitWithError = require('./exit-with-error')
-
 /**
  * @typedef NormalizedConfig
  * @type {object}
@@ -14,14 +12,14 @@ const exitWithError = require('./exit-with-error')
  * @param {any} originalOptions
  * @returns {NormalizedConfig}
  */
-const normalizePluginOptions = originalOptions => {
+const normalizePluginOptions = (originalOptions) => {
   if (!originalOptions)
     return {
       source: 'options',
       baseUrl: './',
       aliases: {},
       debug: false,
-      filter: () => true
+      filter: () => true,
     }
 
   const {
@@ -30,7 +28,7 @@ const normalizePluginOptions = originalOptions => {
     tsConfigPath,
     aliases = {},
     debug = false,
-    filter = () => true
+    filter = () => true,
   } = originalOptions
 
   if (source === 'jsconfig')
@@ -38,7 +36,7 @@ const normalizePluginOptions = originalOptions => {
       source,
       baseUrl,
       debug,
-      filter
+      filter,
     }
 
   if (source === 'tsconfig')
@@ -47,7 +45,7 @@ const normalizePluginOptions = originalOptions => {
       baseUrl,
       tsConfigPath,
       debug,
-      filter
+      filter,
     }
 
   return {
@@ -55,7 +53,7 @@ const normalizePluginOptions = originalOptions => {
     baseUrl,
     aliases,
     debug,
-    filter
+    filter,
   }
 }
 

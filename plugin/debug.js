@@ -1,16 +1,14 @@
-const EXPECTED_CALL_COUNT = 3
-
 const state = {
   wasOptionsPrinted: false,
-  callCount: 0
+  callCount: 0,
 }
 
 function debounce(callback, wait, immediate = false) {
   let timeout = null
 
-  return function() {
+  return function (...args) {
     const callNow = immediate && !timeout
-    const next = () => callback.apply(this, arguments)
+    const next = () => callback.apply(this, args)
 
     clearTimeout(timeout)
     timeout = setTimeout(next, wait)
@@ -22,7 +20,7 @@ function debounce(callback, wait, immediate = false) {
 }
 
 function blue(string) {
-  return '\x1b[34m' + string + '\x1b[0m'
+  return '\u001B[34m' + string + '\u001B[0m'
 }
 
 function searchObject(object, path) {
@@ -45,7 +43,7 @@ function printBaseData({
   initialOptions,
   normalizedOptions,
   initialAliases,
-  aliases
+  aliases,
 }) {
   if (state.wasOptionsPrinted) return
 

@@ -4,7 +4,7 @@ const escapeStringForRegExp = require('./helpers/escape-string-for-regexp')
 const getModuleNameMapper = ({ aliases }) => {
   const moduleNameMapper = {}
 
-  for (let unescapedAliasName in aliases) {
+  for (const unescapedAliasName in aliases) {
     const aliasName = escapeStringForRegExp(unescapedAliasName)
     const aliasPath = aliases[unescapedAliasName]
 

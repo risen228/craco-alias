@@ -1,5 +1,5 @@
 const path = require('path')
-const extractAliases = require('../extract-aliases')
+const extractAliases = require('.')
 
 describe('extract-aliases', () => {
   const appPath = path.resolve(__dirname, '../..')
@@ -9,8 +9,8 @@ describe('extract-aliases', () => {
   const context = {
     paths: {
       appPath,
-      appJsConfig
-    }
+      appJsConfig,
+    },
   }
 
   const inputs = {
@@ -22,26 +22,26 @@ describe('extract-aliases', () => {
           '@file2': 'src/file2.js',
           '@dir': './src/dir',
           '@dir2': '././src/dir2/',
-          $dir3: 'src/dir3',
+          '$dir3': 'src/dir3',
           'my-package': './node_modules/some-package',
-          '@material-ui': 'node_modules/@material-ui/ie-10/ie-10.js'
-        }
+          '@material-ui': 'node_modules/@material-ui/ie-10/ie-10.js',
+        },
       },
-      context
+      context,
     },
     fromJsConfig: {
       pluginOptions: {
-        source: 'jsconfig'
+        source: 'jsconfig',
       },
-      context
+      context,
     },
     fromTsConfig: {
       pluginOptions: {
         source: 'tsconfig',
-        tsConfigPath
+        tsConfigPath,
       },
-      context
-    }
+      context,
+    },
   }
 
   const result = {
@@ -49,9 +49,12 @@ describe('extract-aliases', () => {
     '@file2': path.join(appPath, './src/file2.js'),
     '@dir': path.join(appPath, './src/dir'),
     '@dir2': path.join(appPath, './src/dir2'),
-    $dir3: path.join(appPath, './src/dir3'),
+    '$dir3': path.join(appPath, './src/dir3'),
     'my-package': path.join(appPath, './node_modules/some-package'),
-    '@material-ui': path.join(appPath, './node_modules/@material-ui/ie-10/ie-10.js')
+    '@material-ui': path.join(
+      appPath,
+      './node_modules/@material-ui/ie-10/ie-10.js'
+    ),
   }
 
   test('should correctly extract aliases from options', () => {

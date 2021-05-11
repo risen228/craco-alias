@@ -7,7 +7,7 @@ describe('normalize-plugin-options', () => {
       baseUrl: './',
       aliases: {},
       debug: false,
-      filter: expect.any(Function)
+      filter: expect.any(Function),
     })
 
     expect(normalize({})).toEqual({
@@ -15,7 +15,7 @@ describe('normalize-plugin-options', () => {
       baseUrl: './',
       aliases: {},
       debug: false,
-      filter: expect.any(Function)
+      filter: expect.any(Function),
     })
   })
 
@@ -24,13 +24,13 @@ describe('normalize-plugin-options', () => {
       normalize({
         source: 'jsconfig',
         baseUrl: './',
-        aliases: {}
+        aliases: {},
       })
     ).toEqual({
       source: 'jsconfig',
       baseUrl: './',
       debug: false,
-      filter: expect.any(Function)
+      filter: expect.any(Function),
     })
   })
 
@@ -39,14 +39,14 @@ describe('normalize-plugin-options', () => {
       normalize({
         source: 'tsconfig',
         tsConfigPath: 'tsconfig.paths.json',
-        aliases: {}
+        aliases: {},
       })
     ).toEqual({
       source: 'tsconfig',
       baseUrl: './',
       tsConfigPath: 'tsconfig.paths.json',
       debug: false,
-      filter: expect.any(Function)
+      filter: expect.any(Function),
     })
   })
 
@@ -56,17 +56,17 @@ describe('normalize-plugin-options', () => {
         source: 'options',
         baseUrl: './src',
         aliases: {
-          '@file': './file.js'
-        }
+          '@file': './file.js',
+        },
       })
     ).toEqual({
       source: 'options',
       baseUrl: './src',
       aliases: {
-        '@file': './file.js'
+        '@file': './file.js',
       },
       debug: false,
-      filter: expect.any(Function)
+      filter: expect.any(Function),
     })
   })
 })
