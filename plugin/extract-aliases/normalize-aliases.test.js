@@ -9,7 +9,7 @@ describe('normalize-aliases', () => {
   test('should correctly normalize aliases', () => {
     expect(
       normalizeAliases({
-        absoluteBaseUrl: path.join(appPath, '.'),
+        absoluteBaseUrl: path.resolve(appPath, '.'),
         aliases: {
           '@file': './src/file.js',
           '@file2': 'src/file2.js',
@@ -17,17 +17,22 @@ describe('normalize-aliases', () => {
           '@dir2': '././src/dir2/',
           '$dir3': 'src/dir3',
           'my-package': './node_modules/some-package',
+          'external-package': '/absolute_path/external-package',
           '@material-ui': 'node_modules/@material-ui/ie-10/ie-10.js',
         },
       })
     ).toEqual({
-      '@file': path.join(appPath, './src/file.js'),
-      '@file2': path.join(appPath, './src/file2.js'),
-      '@dir': path.join(appPath, './src/dir'),
-      '@dir2': path.join(appPath, './src/dir2'),
-      '$dir3': path.join(appPath, './src/dir3'),
-      'my-package': path.join(appPath, './node_modules/some-package'),
-      '@material-ui': path.join(
+      '@file': path.resolve(appPath, './src/file.js'),
+      '@file2': path.resolve(appPath, './src/file2.js'),
+      '@dir': path.resolve(appPath, './src/dir'),
+      '@dir2': path.resolve(appPath, './src/dir2'),
+      '$dir3': path.resolve(appPath, './src/dir3'),
+      'my-package': path.resolve(appPath, './node_modules/some-package'),
+      'external-package': path.resolve(
+        appPath,
+        '/absolute_path/external-package'
+      ),
+      '@material-ui': path.resolve(
         appPath,
         './node_modules/@material-ui/ie-10/ie-10.js'
       ),
@@ -35,7 +40,7 @@ describe('normalize-aliases', () => {
 
     expect(
       normalizeAliases({
-        absoluteBaseUrl: path.join(appPath, './src'),
+        absoluteBaseUrl: path.resolve(appPath, './src'),
         aliases: {
           '@file': './file.js',
           '@file2': 'file2.js',
@@ -45,11 +50,11 @@ describe('normalize-aliases', () => {
         },
       })
     ).toEqual({
-      '@file': path.join(appPath, './src/file.js'),
-      '@file2': path.join(appPath, './src/file2.js'),
-      '@dir': path.join(appPath, './src/dir'),
-      '@dir2': path.join(appPath, './src/dir2'),
-      '$dir3': path.join(appPath, './src/dir3'),
+      '@file': path.resolve(appPath, './src/file.js'),
+      '@file2': path.resolve(appPath, './src/file2.js'),
+      '@dir': path.resolve(appPath, './src/dir'),
+      '@dir2': path.resolve(appPath, './src/dir2'),
+      '$dir3': path.resolve(appPath, './src/dir3'),
     })
   })
 })
