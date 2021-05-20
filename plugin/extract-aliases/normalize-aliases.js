@@ -8,7 +8,7 @@ const normalizeAliases = ({ absoluteBaseUrl, aliases }) => {
     const cleanAlias = aliases[aliasName].replace(/\/$/, '')
 
     // make alias path absolute
-    result[aliasName] = path.join(absoluteBaseUrl, cleanAlias)
+    result[aliasName] = path.resolve(absoluteBaseUrl, cleanAlias)
   }
 
   return result

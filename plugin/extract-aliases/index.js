@@ -28,7 +28,7 @@ const extractAliases = ({ pluginOptions, context: { paths } }) => {
   const { appPath } = paths
   const { baseUrl } = options
 
-  const absoluteBaseUrl = path.join(appPath, baseUrl)
+  const absoluteBaseUrl = path.resolve(appPath, baseUrl)
 
   if (options.source === 'jsconfig')
     return extractAliasesFromConfig({
