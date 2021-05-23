@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`normalize-plugin-options should return default config 1`] = `
+Object {
+  "aliases": null,
+  "baseUrl": "./",
+  "debug": false,
+  "filter": [Function],
+  "source": "options",
+  "unsafeAllowModulesOutsideOfSrc": false,
+}
+`;
+
+exports[`normalize-plugin-options should return default config 2`] = `
+Object {
+  "aliases": null,
+  "baseUrl": "./",
+  "debug": false,
+  "filter": [Function],
+  "source": "options",
+  "unsafeAllowModulesOutsideOfSrc": false,
+}
+`;
+
+exports[`normalize-plugin-options should return jsconfig-specific config 1`] = `
+Object {
+  "baseUrl": "./",
+  "debug": false,
+  "filter": [Function],
+  "source": "jsconfig",
+  "unsafeAllowModulesOutsideOfSrc": false,
+}
+`;
+
+exports[`normalize-plugin-options should return the same as an input 1`] = `
+Object {
+  "aliases": Object {
+    "@file": "./file.js",
+  },
+  "baseUrl": "./src",
+  "debug": false,
+  "filter": [Function],
+  "source": "options",
+  "unsafeAllowModulesOutsideOfSrc": true,
+}
+`;
+
+exports[`normalize-plugin-options should return tsconfig-specific config 1`] = `
+Object {
+  "baseUrl": "./",
+  "debug": false,
+  "filter": [Function],
+  "source": "tsconfig",
+  "tsConfigPath": "tsconfig.paths.json",
+  "unsafeAllowModulesOutsideOfSrc": false,
+}
+`;

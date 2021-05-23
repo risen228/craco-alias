@@ -21,22 +21,7 @@ describe('normalize-aliases', () => {
           '@material-ui': 'node_modules/@material-ui/ie-10/ie-10.js',
         },
       })
-    ).toEqual({
-      '@file': path.resolve(appPath, './src/file.js'),
-      '@file2': path.resolve(appPath, './src/file2.js'),
-      '@dir': path.resolve(appPath, './src/dir'),
-      '@dir2': path.resolve(appPath, './src/dir2'),
-      '$dir3': path.resolve(appPath, './src/dir3'),
-      'my-package': path.resolve(appPath, './node_modules/some-package'),
-      'external-package': path.resolve(
-        appPath,
-        '/absolute_path/external-package'
-      ),
-      '@material-ui': path.resolve(
-        appPath,
-        './node_modules/@material-ui/ie-10/ie-10.js'
-      ),
-    })
+    ).toMatchSnapshot()
 
     expect(
       normalizeAliases({
@@ -49,12 +34,6 @@ describe('normalize-aliases', () => {
           '$dir3': 'dir3',
         },
       })
-    ).toEqual({
-      '@file': path.resolve(appPath, './src/file.js'),
-      '@file2': path.resolve(appPath, './src/file2.js'),
-      '@dir': path.resolve(appPath, './src/dir'),
-      '@dir2': path.resolve(appPath, './src/dir2'),
-      '$dir3': path.resolve(appPath, './src/dir3'),
-    })
+    ).toMatchSnapshot()
   })
 })

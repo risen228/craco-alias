@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`extract-aliases should correctly extract aliases from jsconfig: extract-aliases/snap-1 1`] = `
+Object {
+  "$dir3": "<PROJECT_ROOT>/src/dir3",
+  "@dir": "<PROJECT_ROOT>/src/dir",
+  "@dir2": "<PROJECT_ROOT>/src/dir2",
+  "@file": "<PROJECT_ROOT>/src/file.js",
+  "@file2": "<PROJECT_ROOT>/src/file2.js",
+  "@material-ui": "<PROJECT_ROOT>/node_modules/@material-ui/ie-10/ie-10.js",
+  "external-package": "/absolute_path/external-package",
+  "my-package": "<PROJECT_ROOT>/node_modules/some-package",
+}
+`;
+
+exports[`extract-aliases should correctly extract aliases from options: extract-aliases/snap-1 1`] = `
+Object {
+  "$dir3": "<PROJECT_ROOT>/src/dir3",
+  "@dir": "<PROJECT_ROOT>/src/dir",
+  "@dir2": "<PROJECT_ROOT>/src/dir2",
+  "@file": "<PROJECT_ROOT>/src/file.js",
+  "@file2": "<PROJECT_ROOT>/src/file2.js",
+  "@material-ui": "<PROJECT_ROOT>/node_modules/@material-ui/ie-10/ie-10.js",
+  "external-package": "/absolute_path/external-package",
+  "my-package": "<PROJECT_ROOT>/node_modules/some-package",
+}
+`;
+
+exports[`extract-aliases should correctly extract aliases from tsconfig: extract-aliases/snap-1 1`] = `
+Object {
+  "$dir3": "<PROJECT_ROOT>/src/dir3",
+  "@dir": "<PROJECT_ROOT>/src/dir",
+  "@dir2": "<PROJECT_ROOT>/src/dir2",
+  "@file": "<PROJECT_ROOT>/src/file.js",
+  "@file2": "<PROJECT_ROOT>/src/file2.js",
+  "@material-ui": "<PROJECT_ROOT>/node_modules/@material-ui/ie-10/ie-10.js",
+  "external-package": "/absolute_path/external-package",
+  "my-package": "<PROJECT_ROOT>/node_modules/some-package",
+}
+`;

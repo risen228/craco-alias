@@ -1,0 +1,5 @@
+{
+  "snapshotSerializers": [
+    "jest-serializer-path"
+  ]
+}

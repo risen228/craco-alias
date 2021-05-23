@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`generate-module-name-mapper should correctly generate moduleNameMapper 1`] = `
+Object {
+  "^@dir$": "/some/absolute/path/to/dir",
+  "^@dir/(.*)$": "/some/absolute/path/to/dir/$1",
+  "^@file$": "/some/absolute/path/to/file.js",
+}
+`;
+
+exports[`generate-module-name-mapper should correctly generate moduleNameMapper when alias name have special RegExp characters 1`] = `
+Object {
+  "^/$dir$": "/some/absolute/path/to/dir",
+  "^/$dir/(.*)$": "/some/absolute/path/to/dir/$1",
+  "^/$file$": "/some/absolute/path/to/file.js",
+}
+`;

@@ -14,11 +14,7 @@ describe('generate-module-name-mapper', () => {
       },
     })
 
-    expect(moduleNameMapper).toEqual({
-      '^@file$': paths.file,
-      '^@dir$': paths.dir,
-      '^@dir/(.*)$': `${paths.dir}/$1`,
-    })
+    expect(moduleNameMapper).toMatchSnapshot()
   })
 
   test('should correctly generate moduleNameMapper when alias name have special RegExp characters', () => {
@@ -29,10 +25,6 @@ describe('generate-module-name-mapper', () => {
       },
     })
 
-    expect(moduleNameMapper).toEqual({
-      '^\\$file$': paths.file,
-      '^\\$dir$': paths.dir,
-      '^\\$dir/(.*)$': `${paths.dir}/$1`,
-    })
+    expect(moduleNameMapper).toMatchSnapshot()
   })
 })

@@ -45,32 +45,17 @@ describe('extract-aliases', () => {
     },
   }
 
-  const result = {
-    '@file': path.resolve(appPath, './src/file.js'),
-    '@file2': path.resolve(appPath, './src/file2.js'),
-    '@dir': path.resolve(appPath, './src/dir'),
-    '@dir2': path.resolve(appPath, './src/dir2'),
-    '$dir3': path.resolve(appPath, './src/dir3'),
-    'my-package': path.resolve(appPath, './node_modules/some-package'),
-    'external-package': path.resolve(
-      appPath,
-      '/absolute_path/external-package'
-    ),
-    '@material-ui': path.resolve(
-      appPath,
-      './node_modules/@material-ui/ie-10/ie-10.js'
-    ),
-  }
+  const snapshotName = 'extract-aliases/snap-1'
 
   test('should correctly extract aliases from options', () => {
-    expect(extractAliases(inputs.fromOptions)).toEqual(result)
+    expect(extractAliases(inputs.fromOptions)).toMatchSnapshot(snapshotName)
   })
 
   test('should correctly extract aliases from jsconfig', () => {
-    expect(extractAliases(inputs.fromJsConfig)).toEqual(result)
+    expect(extractAliases(inputs.fromJsConfig)).toMatchSnapshot(snapshotName)
   })
 
   test('should correctly extract aliases from tsconfig', () => {
-    expect(extractAliases(inputs.fromTsConfig)).toEqual(result)
+    expect(extractAliases(inputs.fromTsConfig)).toMatchSnapshot(snapshotName)
   })
 })

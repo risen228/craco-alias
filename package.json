@@ -4,7 +4,7 @@
   "description": "A craco plugin for automatic aliases generation",
   "main": "plugin/index.js",
   "scripts": {
-    "test": "jest \".*\\.test\\.js\"",
+    "test": "jest \".*\\.test\\.js\" --config jest.config.json",
     "prepare": "husky install"
   },
   "repository": {
@@ -36,6 +36,7 @@
     "eslint": "7.10.0",
     "husky": "^6.0.0",
     "jest": "^24.9.0",
+    "jest-serializer-path": "^0.1.15",
     "lint-staged": "^11.0.0",
     "prettier": "2.2.1"
   },
