@@ -1,11 +1,12 @@
 const fs = require('fs')
 const path = require('path')
+const { parse } = require('tsconfig')
 const normalizePluginOptions = require('../normalize-plugin-options')
 const normalizeAliases = require('./normalize-aliases')
 
 const extractAliasesFromConfig = ({ configPath, absoluteBaseUrl }) => {
-  const configFileContents = fs.readFileSync(configPath)
-  const config = JSON.parse(configFileContents)
+  const configFileContents = fs.readFileSync(configPath).toString()
+  const config = parse(configFileContents, configPath)
 
   const { compilerOptions } = config
 
