@@ -12,8 +12,19 @@ const extractAliasesFromConfig = ({ configPath, absoluteBaseUrl }) => {
   const standardAliases = {}
 
   for (const aliasName in compilerOptions.paths) {
-    const [aliasPath] = compilerOptions.paths[aliasName]
-    standardAliases[aliasName.replace('/*', '')] = aliasPath.replace('/*', '')
+    const alias = compilerOptions.paths[aliasName]
+    if (typeof alias === 'string') {
+      const [aliasPath] = compilerOptions.paths[aliasName]
+      standardAliases[aliasName.replace('/*', '')] = aliasPath.replace('/*', '')
+    } else {
+      const aliasPath = []
+      alias.forEach((anAlias) => {
+        const sanitized = anAlias.replace('/*', '')
+        if (!aliasPath.includes(sanitized)) aliasPath.push(sanitized)
+      })
+      standardAliases[aliasName.replace('/*', '')] =
+        aliasPath.length > 1 ? aliasPath : aliasPath[0]
+    }
   }
 
   return normalizeAliases({

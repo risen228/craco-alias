@@ -35,5 +35,15 @@ describe('normalize-aliases', () => {
         },
       })
     ).toMatchSnapshot()
+
+    expect(
+      normalizeAliases({
+        absoluteBaseUrl: path.resolve(appPath, './fallback_test'),
+        aliases: {
+          '$dir3': ['dir3', 'fallback/dir3'],
+          '@file2': ['file2.js'],
+        },
+      })
+    ).toMatchSnapshot()
   })
 })
