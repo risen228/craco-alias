@@ -3,12 +3,25 @@ const path = require('path')
 const normalizeAliases = ({ absoluteBaseUrl, aliases }) => {
   const result = {}
 
-  for (const aliasName in aliases) {
+  function resolve(alias) {
     // remove trailing slash
-    const cleanAlias = aliases[aliasName].replace(/\/$/, '')
+    const cleanAlias = alias.replace(/\/$/, '')
 
     // make alias path absolute
-    result[aliasName] = path.resolve(absoluteBaseUrl, cleanAlias)
+    return path.resolve(absoluteBaseUrl, cleanAlias)
+  }
+
+  for (const aliasName in aliases) {
+    const alias = aliases[aliasName]
+    if (typeof alias === 'string') {
+      result[aliasName] = resolve(alias)
+    } else {
+      const results = []
+      alias.forEach((anAlias) => {
+        results.push(resolve(anAlias))
+      })
+      result[aliasName] = results
+    }
   }
 
   return result

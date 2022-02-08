@@ -22,3 +22,15 @@ Object {
   "@file2": "<PROJECT_ROOT>/src/file2.js",
 }
 `;
+
+exports[`normalize-aliases should correctly normalize aliases 3`] = `
+Object {
+  "$dir3": Array [
+    "<PROJECT_ROOT>/fallback_test/dir3",
+    "<PROJECT_ROOT>/fallback_test/fallback/dir3",
+  ],
+  "@file2": Array [
+    "<PROJECT_ROOT>/fallback_test/file2.js",
+  ],
+}
+`;
