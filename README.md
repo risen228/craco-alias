@@ -1,4 +1,4 @@
-# craco-alias
+# This package is deprecated, use [react-app-alias](https://github.com/oklas/react-app-alias) instead
 
 [![npm](https://img.shields.io/npm/v/craco-alias.svg)](https://www.npmjs.com/package/craco-alias)
 
