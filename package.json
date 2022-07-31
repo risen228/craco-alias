@@ -45,5 +45,8 @@
       "eslint --fix",
       "git add"
     ]
+  },
+  "dependencies": {
+    "tsconfig": "^7.0.0"
   }
 }

@@ -1,3 +1,5 @@
+const { parse } = require('tsconfig')
+
 const checkConfigContents = ({
   unparsedConfig,
   configFileName,
@@ -6,7 +8,7 @@ const checkConfigContents = ({
   let config
 
   try {
-    config = JSON.parse(unparsedConfig)
+    config = parse(unparsedConfig.toString(), configFileName)
   } catch (error) {
     return handleError(
       `Cannot parse ${configFileName}. Please validate it on https://jsonformatter.curiousconcept.com.`
